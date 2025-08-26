@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark"  style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:8000/">Blogify</a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Links -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+
+                <!-- Always visible -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:8000/">Home</a>
+                </li>
+
+                <% if (locals.user) { %>
+                    <!-- Authenticated User Options -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog/add">Add Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="text-transform: uppercase;">
+                            <%= locals.user.name %>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/user/logout">LogOut</a></li>
+                        </ul>
+                    </li>
+                <% } else { %>
+                    <!-- Guest Options -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/signin">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/signup">Sign Up</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Error Alert -->
+<% if (locals.error) { %>
+    <div class="container mt-4">
+        <div class="alert alert-danger" role="alert">
+            <%= locals.error %>
+        </div>
+    </div>
+<% } %>

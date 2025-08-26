@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./Partials/Head") %>
+    <title>Create Blog</title>
+</head>
+
+<body>
+    <%- include("./Partials/Nav") %>
+
+    <!-- Debug User Info -->
+    <!-- <%= JSON.stringify(user) %> -->
+
+    <!-- Blog Creation Form -->
+    <div class="container mt-5">
+        <form action="/blog" method="post" class="p-4 bg-light rounded shadow-sm" enctype="multipart/form-data">
+            <h3 class="mb-4 text-primary text-center">Create New Post</h3>
+
+            <!-- Cover Image -->
+            <div class="mb-3">
+                <label for="coverImage" class="form-label">Cover Image</label>
+                <input type="file" name="coverImage" class="form-control" id="coverImage">
+            </div>
+
+            <!-- Title -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" id="title" placeholder="Enter your post title">
+            </div>
+
+            <!-- Body -->
+            <div class="mb-3">
+                <label for="body" class="form-label">Body</label>
+                <textarea class="form-control" name="body" id="body" rows="6"
+                    placeholder="Write your content here..."></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
+        </form>
+    </div>
+
+    <%- include("./Partials/Scripts") %>
+</body>
+
+</html>
